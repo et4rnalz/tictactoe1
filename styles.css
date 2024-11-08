@@ -10,7 +10,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPRMFr40XbWlhQExnIvQxoEunmVSaPCFgE7A&s);
     background-color: #222;
     color: #fff;
 }
@@ -22,9 +21,28 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
-    color: white;
+    font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #555;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #777;
 }
 
 #game-board {
@@ -58,21 +76,6 @@ h1 {
 
 #status-text {
     font-size: 1.2rem;
-}
-
-#restart-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    margin-top: 10px;
-    cursor: pointer;
-    background-color: #555;
-    border: none;
-    color: #fff;
-    transition: background-color 0.3s;
-}
-
-#restart-btn:hover {
-    background-color: #777;
 }
 
 @media (max-width: 600px) {

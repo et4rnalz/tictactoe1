@@ -1,9 +1,15 @@
+const menu = document.getElementById('menu');
+const gameScreen = document.getElementById('game-screen');
 const gameBoard = document.getElementById('game-board');
 const cells = document.querySelectorAll('[data-cell]');
 const statusText = document.getElementById('status-text');
 const restartButton = document.getElementById('restart-btn');
+const aiModeButton = document.getElementById('ai-mode-btn');
+const twoPlayerModeButton = document.getElementById('two-player-mode-btn');
+const quitButton = document.getElementById('quit-btn');
 
 let oTurn;
+let isSinglePlayer = false; // Set based on selected mode
 
 const WINNING_COMBINATIONS = [
     [0, 1, 2],
@@ -37,6 +43,9 @@ function handleClick(e) {
     } else {
         swapTurns();
         setStatusText();
+        if (isSinglePlayer && oTurn) {
+            setTimeout(aiMove, 500);  // AI makes a move after 0.5 seconds
+        }
     }
 }
 
@@ -75,6 +84,44 @@ function endGame(draw) {
     cells.forEach(cell => cell.removeEventListener('click', handleClick));
 }
 
-restartButton.addEventListener('click', startGame);
+// AI move logic
+function aiMove() {
+    const availableCells = [...cells].filter(cell => cell.textContent === '');
+    const randomCell = availableCells[Math.floor(Math.random() * availableCells.length)];
+    placeMark(randomCell, "O");
+    if (checkWin("O")) {
+        endGame(false);
+    } else if (isDraw()) {
+        endGame(true);
+    } else {
+        swapTurns();
+        setStatusText();
+    }
+}
+
+// Menu event listeners
+aiModeButton.addEventListener('click', () => {
+    isSinglePlayer = true;
+    menu.style.display = 'none';
+    gameScreen.style.display = 'block';
+    startGame();
+});
+
+twoPlayerModeButton.addEventListener('click', () => {
+    isSinglePlayer = false;
+    menu.style.display = 'none';
+    gameScreen.style.display = 'block';
+    startGame();
+});
+
+restartButton.addEventListener('click', () => {
+    menu.style.display = 'block';
+    gameScreen.style.display = 'none';
+});
+
+quitButton.addEventListener('click', () => {
+    alert("Thank you for playing!");
+    window.close(); // This may not work on all browsers
+});
 
 startGame();

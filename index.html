@@ -3,27 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe</title>
+    <title>Advanced Tic-Tac-Toe</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Tic-Tac-Toe</h1>
-        <h1>By Suhaib Uddin</h1>
-        <div id="game-board">
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
-            <div class="cell" data-cell></div>
+        
+        <!-- Menu Screen -->
+        <div id="menu">
+            <button id="ai-mode-btn">Play Against AI</button>
+            <button id="two-player-mode-btn">Two Player Mode</button>
+            <button id="quit-btn">Quit</button>
         </div>
-        <div class="status">
-            <p id="status-text"></p>
-            <button id="restart-btn">Restart Game</button>
+
+        <!-- Game Screen -->
+        <div id="game-screen" style="display: none;">
+            <div id="game-board">
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+                <div class="cell" data-cell></div>
+            </div>
+            <div class="status">
+                <p id="status-text"></p>
+                <button id="restart-btn">Return to Menu</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
